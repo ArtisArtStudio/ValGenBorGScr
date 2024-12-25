@@ -531,6 +531,7 @@ async function loadParticles(options) {
     }
   };
 const optionsConfetti = {
+  autoPlay: true,
   fullScreen: {
     enable: true
   },
@@ -637,92 +638,39 @@ const optionsConfetti = {
     }
   },
   detectRetina: true,
-  responsive: [
-    {
-      maxWidth: 700,
-      options: {
-        particles: {
-          move: {
-            speed: 20,
-            decay: 0.1
-          }
-        },
-        emitters: [
-          {
-            direction: "top-right",
-            life: {
-              duration: 10,
-              count: 1
-            },
-            rate: {
-              delay: 0.1,
-              quantity: 5
-            },
-            position: {
-              x: 0,
-              y: 0
-            },
-            size: {
-              width: 0,
-              height: 0
-            }
-          },
-          {
-            life: {
-              duration: 10,
-              count: 1
-            },
-            direction: "top",
-            rate: {
-              delay: 0.1,
-              quantity: 5
-            },
-            position: {
-              x: 50,
-              y: 0
-            },
-            size: {
-              width: 0,
-              height: 0
-            }
-          },
-          {
-            life: {
-              duration: 10,
-              count: 1
-            },
-            direction: "top-left",
-            rate: {
-              delay: 0.1,
-              quantity: 5
-            },
-            position: {
-              x: 100,
-              y: 0
-            },
-            size: {
-              width: 0,
-              height: 0
-            }
-          }
-        ]
-      }
-    }
-  ],
   emitters: [
+    {
+      direction: "top-right",
+      life: {
+        duration: 10,
+        count: 1
+      },
+      rate: {
+        delay: 0.1,
+        quantity: 5
+      },
+      position: {
+        x: 0,
+        y: 0
+      },
+      size: {
+        width: 0,
+        height: 0
+      }
+    },
     {
       life: {
         duration: 10,
         count: 1
       },
-      direction: "top-right",
+      direction: "top",
       rate: {
         delay: 0.1,
-        quantity: 20
+        quantity: 5
       },
       position: {
-        x: 0,
-        y: 50
+        x: 50,
+        y: 0
       },
       size: {
         width: 0,
@@ -737,11 +685,11 @@ const optionsConfetti = {
       direction: "top-left",
       rate: {
         delay: 0.1,
-        quantity: 20
+        quantity: 5
       },
       position: {
         x: 100,
-        y: 50
+        y: 0
       },
       size: {
         width: 0,
@@ -760,9 +708,9 @@ function startParticles() {
 function stopParticles() {
   tsParticles.domItem(0).stop();
 }
-function startConfetti(options) {
+function startConfetti() {
   loadParticles(optionsConfetti);
-  //tsParticles.domItem(1).play();
+  tsParticles.domItem(0).play();
 }
 function stopConfetti() {
   tsParticles.domItem(0).stop();

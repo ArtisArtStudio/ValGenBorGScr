@@ -312,7 +312,7 @@ var pct =new Array(9);
         if (rnd>8) {
             rnd=8;   
         }
-        rnd=1;
+        rnd=4;
         for (i = 0; i < scratchers.length; i++) {
             i1 = i + 1;
             scratchers[i] = new Scratcher('scratcher' + i1);
