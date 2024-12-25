@@ -26,7 +26,8 @@ body {
    -moz-text-size-adjust: none;
     -ms-text-size-adjust: none;
         text-size-adjust: none;
-
+/* Prevent pull-down-to-refresh gesture */
+overscroll-behavior-y: contain; 
 }
 
 /* @media only screen and (prefers-color-scheme: dark), (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
