@@ -237,10 +237,76 @@ function stopParticles() {
   tsParticles.domItem(0).stop();
 }
 function startConfetti() {
-  loadParticles(optionsConfetti);
-  tsParticles.domItem(0).play();
+  console.log(userOS);
+  if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
+    loadParticles(optionsConfetti);
+    tsParticles.domItem(0).play();
+  } else {
+    confetti_fallback();
+  }
 }
 function stopConfetti() {
-  tsParticles.domItem(0).stop();
+  if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
+    tsParticles.domItem(0).stop();
+  }
 }
 export {startParticles, stopParticles, startConfetti, stopConfetti};
+function confetti_fallback() {
+  var duration = 10 * 1000;
+   var end = Date.now() + duration;
+   var defaults = { startVelocity: 10, spread: 360, ticks: 70, zIndex: 0 };
+   var particleCount = 5 ;
+   (function frame() {
+   // launch a few confetti from the left edge
+   confetti({...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }, colors: ['#FFFFFF']}
+   );
+   // and launch a few from the right edge
+   confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },colors: ['#FFFFFF']}
+   );
+
+   // keep going until we are out of time
+   if (Date.now() < end && triggered==true) {
+       requestAnimationFrame(frame);
+       
+       return;
+   }
+  });
+}
+var userOS;    // will either be iOS, Android or unknown
+var userOSver; // this is a string, use Number(userOSver) to convert
+
+function getOS()
+{
+  var ua = navigator.userAgent;
+  var uaindex;
+
+  // determine OS
+  if ( ua.match(/iPad/) || ua.match(/iPod/) || ua.match(/iPhone/) )
+  {
+    userOS = 'iOS';
+    uaindex = ua.indexOf( 'OS ' );
+  }
+  else if ( ua.match(/Android/) )
+  {
+    userOS = 'Android';
+    uaindex = ua.indexOf( 'Android ' );
+  }
+  else
+  {
+    userOS = 'unknown';
+  }
+
+  // determine version
+  if ( userOS === 'iOS'  &&  uaindex > -1 )
+  {
+    userOSver = ua.substring(uaindex + 3, uaindex+3+2);
+  }
+  else if ( userOS === 'Android'  &&  uaindex > -1 )
+  {
+    userOSver = ua.substring( uaindex + 8, uaindex + 8 + 3 );
+  }
+  else
+  {
+    userOSver = 'unknown';
+  }
+}
