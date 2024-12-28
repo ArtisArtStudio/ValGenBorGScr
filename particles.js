@@ -2,12 +2,14 @@
 //import { loadAll } from https://cdn.jsdelivr.net/npm/@tsparticles/all@3.0.3/+esm;
 var userOS;    // will either be iOS, Android or unknown
 var userOSver; // this is a string, use Number(userOSver) to convert
+window.onload = async () => {
+  getOS();
+  alert (userOS + " "+userOSver);
 
+}
 $(document).ready(async function () {
   await loadHeartShape(tsParticles);
   await loadFull(tsParticles);
-  getOS();
-  alert (userOS + " "+userOSver);
 });
 
 async function loadParticles(options) {
