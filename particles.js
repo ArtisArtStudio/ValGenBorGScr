@@ -4,7 +4,7 @@
 $(document).ready(async function () {
   await loadHeartShape(tsParticles);
   await loadFull(tsParticles);
-
+  getOS();
 });
 
 async function loadParticles(options) {
