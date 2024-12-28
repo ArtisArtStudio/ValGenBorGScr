@@ -229,12 +229,15 @@ const optionsConfetti = {
 loadParticles(options);
 
 function startParticles() {
-  loadParticles(options);
-  tsParticles.domItem(0).play();
-
+  if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
+    loadParticles(options);
+    tsParticles.domItem(0).play();
+  }
 }
 function stopParticles() {
-  tsParticles.domItem(0).stop();
+  if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
+    tsParticles.domItem(0).stop();
+  }
 }
 function startConfetti() {
   console.log(userOS);
