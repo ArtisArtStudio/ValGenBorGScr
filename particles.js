@@ -1,10 +1,13 @@
 //import { tsParticles } from https://cdn.jsdelivr.net/npm/@tsparticles/engine@3.0.3/+esm;
 //import { loadAll } from https://cdn.jsdelivr.net/npm/@tsparticles/all@3.0.3/+esm;
+var userOS;    // will either be iOS, Android or unknown
+var userOSver; // this is a string, use Number(userOSver) to convert
 
 $(document).ready(async function () {
   await loadHeartShape(tsParticles);
   await loadFull(tsParticles);
   getOS();
+  alert (userOS + " "+userOSver);
 });
 
 async function loadParticles(options) {
@@ -259,6 +262,10 @@ function stopConfetti() {
   }
 }
 export {startParticles, stopParticles, startConfetti, stopConfetti};
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 function confetti_fallback() {
   var duration = 10 * 1000;
    var end = Date.now() + duration;
@@ -273,15 +280,13 @@ function confetti_fallback() {
    );
 
    // keep going until we are out of time
-   if (Date.now() < end && triggered==true) {
+   if (Date.now() < end) {
        requestAnimationFrame(frame);
        
        return;
    }
-  });
+  }());
 }
-var userOS;    // will either be iOS, Android or unknown
-var userOSver; // this is a string, use Number(userOSver) to convert
 
 function getOS()
 {
