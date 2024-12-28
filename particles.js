@@ -1,8 +1,12 @@
-import { tsParticles } from "https://cdn.jsdelivr.net/npm/@tsparticles/engine@3.0.3/+esm";
-import { loadAll } from "https://cdn.jsdelivr.net/npm/@tsparticles/all@3.0.3/+esm";
+//import { tsParticles } from "https://cdn.jsdelivr.net/npm/@tsparticles/engine@3.0.3/+esm";
+//import { loadAll } from "https://cdn.jsdelivr.net/npm/@tsparticles/all@3.0.3/+esm";
+
+$(document).ready(async function () {
+  await loadFull(tsParticles);
+});
 
 async function loadParticles(options) {
-    await loadAll(tsParticles);
+    //await loadFull(tsParticles);
   
     await tsParticles.load({ id: "tsparticles", options });
 
@@ -716,5 +720,4 @@ function stopConfetti() {
   tsParticles.domItem(0).stop();
 }
 export {startParticles, stopParticles, startConfetti, stopConfetti};
-
 
