@@ -4,7 +4,6 @@ var userOS;    // will either be iOS, Android or unknown
 var userOSver; // this is a string, use Number(userOSver) to convert
 window.onload = async () => {
   getOS();
-  alert (userOS + " "+userOSver);
 
 }
 $(document).ready(async function () {
@@ -234,22 +233,14 @@ const optionsConfetti = {
 loadParticles(options);
 
 function startParticles() {
-  alert(userOS+"startp");
-
-  if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
     loadParticles(options);
     tsParticles.domItem(0).play();
-  }
 }
 function stopParticles() {
-  alert(userOS+"stopp");
-
-  if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
-    tsParticles.domItem(0).stop();
-  }
+   tsParticles.domItem(0).stop();
 }
 function startConfetti() {
-  alert(userOS+"startc");
+  //alert(userOS+"startc");
   if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
     loadParticles(optionsConfetti);
     tsParticles.domItem(0).play();
@@ -258,7 +249,7 @@ function startConfetti() {
   }
 }
 function stopConfetti() {
-  alert(userOS+"stopC");
+  //alert(userOS+"stopC");
   if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
     tsParticles.domItem(0).stop();
   }
