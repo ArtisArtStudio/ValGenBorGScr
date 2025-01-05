@@ -33,18 +33,18 @@ async function loadParticles(options) {
       },
       move: {
         angle: {
-          offset: 0,
-          value: 5
+          offset: 10,
+          value: 15
         },
         direction: "random",
         enable: true,
         outModes: {
           default: "out"
         },
-        speed: 0.4
+        speed: 0.2
       },
       number: {
-        value: 100
+        value: 50
       },
       opacity: {
         value: {
