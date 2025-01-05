@@ -19,6 +19,8 @@ async function loadParticles(options) {
   
   const options = {
     "autoPlay": true,
+    fpsLimit: 30,
+    detectRetina: false,
     fullScreen: 
     {
         enable: true,
@@ -42,7 +44,7 @@ async function loadParticles(options) {
         speed: 0.4
       },
       number: {
-        value: 200
+        value: 100
       },
       opacity: {
         value: {
@@ -64,6 +66,8 @@ async function loadParticles(options) {
 
 const optionsConfetti = {
   autoPlay: true,
+  fpsLimit: 30,
+  detectRetina: false,
   fullScreen: {
     enable: true
   },
@@ -233,11 +237,15 @@ const optionsConfetti = {
 loadParticles(options);
 
 function startParticles() {
+  if ((userOS === 'iOS' && Number( userOSver.slice(0,2) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
     loadParticles(options);
     tsParticles.domItem(0).play();
+  }
 }
 function stopParticles() {
+  if ((userOS === 'iOS' && Number( userOSver.slice(0,2) ) >= 14 ) || userOS === 'Android'|| typeof userOS === 'undefined') {
    tsParticles.domItem(0).stop();
+  }
 }
 function startConfetti() {
   //alert(userOS+"startc");
